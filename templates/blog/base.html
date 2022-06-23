@@ -1,0 +1,63 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechBlogs</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}"/>
+</head>
+<body class="bg-yellow-500">
+    <header class="bg-lime-800 p-5 fixed top-0 w-full ">
+
+        <ul class="flex space-x-4 inline-block relative justify-center p-5 text-lg font-medium">
+            <li class=" text-lime-200 font-bold font-mono text-2xl fixed left-20">TechBlogs</li>
+            <li><a class="p-2 text-lime-200 hover:text-lime-800 hover:bg-lime-200 rounded-xl" href="{% url 'blog:home' %}">Home</a></li>
+            <li><a class="p-2 text-lime-200 hover:text-lime-800 hover:bg-lime-200 rounded-xl" href="{% url 'login' %}">Login</a></li>
+            <li><a class="p-2 text-lime-200 hover:text-lime-800 hover:bg-lime-200 rounded-xl" href="{% url 'blog:register' %}">Signup</a></li>
+            <li><a class="p-2 text-lime-200 hover:text-lime-800 hover:bg-lime-200 rounded-xl" href="#">About</a></li>        
+        </ul>
+    </header>
+    
+
+    <div class="flex place-content-center mt-36 ">
+        <br><br>
+
+       
+        <ul class="font-medium text-xl flex space-x-5 text-center">
+            {% if user.is_authenticated %}
+            <li>
+                <a class="bg-white p-2 text-red-500  rounded-2xl">Welcome: {{user.username}}</a>
+            </li>
+            <br>
+            <li>
+                <a href="{% url 'blog:post_new' %}">New Post</a>
+            </li>
+            <li>
+                <a href="{% url 'blog:draft_list' %}">Drafts</a>
+            </li>
+            <li>
+                <a href="{% url 'logout' %}">Logout</a>
+            </li>
+            {% else %}
+            <h2 class="font-sans font-medium text-5xl flex align-center p-9">Welcome to the TechBlogs</h2>
+            <p>
+    
+            </p>
+            {% endif %}
+        </ul>
+    </div>
+    <br>
+        
+    {% block content %}
+    {% endblock %}
+    
+</div>
+    </center>
+<footer class="bg-lime-800 text-lime-200 font-medium p-5 fixed bottom-0 text-lg w-full">
+    TechBlogs | v 1.0
+</footer>
+</body>
+</html>

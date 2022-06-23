@@ -1,0 +1,21 @@
+{% extends 'blog/base.html' %}
+{% load tailwind_filters %}
+    
+    {% block content %}
+    <center>
+        <div class=" bg-gray-300 box-border w-96 p-5 shadow-xl rounded-xl mb-20">
+    <div>
+        <h2 class = "font-sans font-medium">Register: </h2>
+
+        {% if form.errors %}
+        <p class="font-san">{{form.errors}}</p>
+        {% endif %}
+        <form  method="post">
+            {% csrf_token %}
+            {{ form|crispy }}
+            <input class="bg-teal-700 p-3 border-white rounded-2xl text-white" type="submit" value="Register" />
+           
+        </form>
+    </div>
+</div></center>
+    {% endblock %}

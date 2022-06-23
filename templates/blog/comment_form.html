@@ -1,0 +1,13 @@
+{% extends 'blog/base.html' %}
+{% load tailwind_filters %}
+{% block content %}
+<center>
+    <div class=" bg-gray-300 box-border w-96 p-5 shadow-xl rounded-xl mb-20">
+<h1> New Comment </h1>
+<form action="" method='POST'>
+{% csrf_token %}    
+{{ form|crispy }}
+<input type="submit"  value="Post Comment">
+</form>
+</div></center>
+{% endblock %}

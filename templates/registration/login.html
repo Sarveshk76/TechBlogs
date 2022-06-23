@@ -1,0 +1,21 @@
+{% extends 'blog/base.html' %}
+{% load tailwind_filters %}
+    
+    {% block content %}
+    <center>
+        <div class=" bg-gray-300 box-border w-96 p-5 shadow-xl rounded-xl mb-20">
+    <div>
+        <h2 class = "font-sans font-medium">Please Login:</h2>
+
+        {% if form.errors %}
+        <p class="font-san">Username and password didn't match! Please try again.</p>
+        {% endif %}
+        <form action="{% url 'login' %}" method="post">
+            {% csrf_token %}
+            {{ form|crispy }}
+            <input class="bg-teal-700 p-3 border-white rounded-2xl text-white" type="submit" value="Login" />
+           
+        </form>
+    </div>
+</div></center>
+    {% endblock %}
